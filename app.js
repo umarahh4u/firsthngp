@@ -37,11 +37,11 @@ app.get("/api/hello", (req, res) => {
 
   res.status(200).json({
     // status: "success",
-    data: {
-      client_ip: visitors_ip, // The IP address of the requester
-      location: city, // The city of the requester
-      greeting: `Hello, ${visitorsName}!, the temperature is 11 degrees Celcius in ${city}`,
-    },
+    // data: {
+    client_ip: visitors_ip, // The IP address of the requester
+    location: city, // The city of the requester
+    greeting: `Hello, ${visitorsName}!, the temperature is 11 degrees Celcius in ${city}`,
+    // },
   });
   // }
   // else {
