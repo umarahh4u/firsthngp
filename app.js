@@ -19,7 +19,8 @@ app.listen(port, () => {
 // server.listen
 
 app.use((req, res, next) => {
-  req.visitorIp = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+  req.visitorIp =
+    req.headers["x-forwarded-for"].split(",")[0] || req.socket.remoteAddress;
   next();
 });
 
