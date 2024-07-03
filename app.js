@@ -20,7 +20,6 @@ app.listen(port, () => {
 
 app.use((req, res, next) => {
   req.visitorIp = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
-
   next();
 });
 
@@ -33,7 +32,7 @@ app.get("/api/hello", (req, res) => {
   const geo = geoip.lookup(visitors_ip);
 
   // if (geo) {
-  const city = geo.city;
+  const city = geo?.city || `city can't be found`;
 
   res.status(200).json({
     status: "success",
