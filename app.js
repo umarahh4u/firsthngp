@@ -36,7 +36,7 @@ app.get("/api/hello", (req, res) => {
   const city = geo?.city || `city can't be found`;
 
   res.status(200).json({
-    status: "success",
+    // status: "success",
     data: {
       client_ip: visitors_ip, // The IP address of the requester
       location: city, // The city of the requester
