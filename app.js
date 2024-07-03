@@ -30,29 +30,29 @@ app.get("/api/hello", (req, res) => {
     ? req.query.visitors_name
     : "Visitor";
   // Get geo data based on IP address
-  // const geo = geoip.lookup(visitors_ip);
+  const geo = geoip.lookup(visitors_ip);
 
-  // if (geo) {
-  //   const city = geo.city;
+  if (geo) {
+    const city = geo.city;
 
-  //   res.status(200).json({
-  //     status: "success",
-  //     data: {
-  //       client_ip: visitors_ip, // The IP address of the requester
-  //       location: city, // The city of the requester
-  //       greeting: `Hello, ${visitorsName}!, the temperature is 11 degrees Celcius in ${city}`,
-  //     },
-  //   });
-  // } else {
-  res.status(200).json({
-    status: "success",
-    data: {
-      client_ip: visitors_ip, // The IP address of the requester
-      location: "Not valid", // The city of the requester
-      greeting: `Hello, ${visitorsName}!, the temperature is 11 degrees Celcius is none `,
-    },
-  });
-  // }
+    res.status(200).json({
+      status: "success",
+      data: {
+        client_ip: visitors_ip, // The IP address of the requester
+        location: city, // The city of the requester
+        greeting: `Hello, ${visitorsName}!, the temperature is 11 degrees Celcius in ${city}`,
+      },
+    });
+  } else {
+    res.status(200).json({
+      status: "success",
+      data: {
+        client_ip: visitors_ip, // The IP address of the requester
+        location: "Not valid", // The city of the requester
+        greeting: `Hello, ${visitorsName}!, the temperature is 11 degrees Celcius is none `,
+      },
+    });
+  }
 });
 
 app.use(middlewares.notFound);
